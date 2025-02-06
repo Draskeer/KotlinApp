@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2025_sdv_parisa</string>
+    <string name="bt_load">Charger</string>
+    <string name="bt_clear">"Effacer "</string>
+</resources>
