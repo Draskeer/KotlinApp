@@ -2,6 +2,7 @@ package com.amonteiro.a2025_sdv_parisa.exo
 
 import com.amonteiro.a2025_sdv_parisa.model.CarBean
 
+
 class MyLiveData(value : String? = null) {
 
     var value = value
