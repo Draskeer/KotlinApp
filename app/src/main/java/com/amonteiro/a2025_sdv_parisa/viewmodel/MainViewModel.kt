@@ -33,10 +33,10 @@ class MainViewModel : ViewModel() {
     val runInProgress = MutableStateFlow(false)
     val errorMessage = MutableStateFlow("")
 
-    init {//Création d'un jeu de donnée au démarrage
-        println("Init viewModel")
-        loadFakeData()
-    }
+//    init {//Création d'un jeu de donnée au démarrage
+//        println("Init viewModel")
+//        loadFakeData()
+//    }
 
     fun loadFakeData(runInProgress :Boolean = false, errorMessage:String = "" ) {
         this.runInProgress.value = runInProgress

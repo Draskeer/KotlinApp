@@ -1,6 +1,7 @@
 package com.amonteiro.a2025_sdv_parisa.ui.screens
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -37,8 +39,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.amonteiro.a2025_sdv_parisa.R
 import com.amonteiro.a2025_sdv_parisa.model.PictureBean
+import com.amonteiro.a2025_sdv_parisa.ui.MyError
 import com.amonteiro.a2025_sdv_parisa.ui.theme._2025_sdv_parisaTheme
 import com.amonteiro.a2025_sdv_parisa.viewmodel.MainViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
@@ -46,16 +50,29 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 
 @Composable
-fun SearchScreen(modifier: Modifier = Modifier, mainViewModel: MainViewModel = MainViewModel()) {
+fun SearchScreen(modifier: Modifier = Modifier, mainViewModel: MainViewModel = viewModel()) {
 
     println("SearchScreen")
     var searchText = remember { mutableStateOf("") }
 
     Column(modifier = modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
 
-        var list = mainViewModel.dataList.collectAsStateWithLifecycle().value.filter { it.title.contains(searchText.value, true)  }
+        var list = mainViewModel.dataList.collectAsStateWithLifecycle().value
+            //Si c'est un filtre de recherche
+            //.filter { it.title.contains(searchText.value, true)  }
+        var runInProgress = mainViewModel.runInProgress.collectAsStateWithLifecycle().value
+        var errorMessage = mainViewModel.errorMessage.collectAsStateWithLifecycle().value
 
         SearchBar(searchText= searchText)
+
+
+
+        MyError(errorMessage = errorMessage)
+
+        AnimatedVisibility (runInProgress) {
+            CircularProgressIndicator()
+        }
+
 
         LazyColumn(modifier= Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(list.size) {
@@ -79,7 +96,7 @@ fun SearchScreen(modifier: Modifier = Modifier, mainViewModel: MainViewModel = M
             }
 
             Button(
-                onClick = { /* Do something! */ },
+                onClick = { mainViewModel.loadWeathers(searchText.value) },
                 contentPadding = ButtonDefaults.ButtonWithIconContentPadding
             ) {
                 Icon(
@@ -178,29 +195,14 @@ fun PictureRowItem(modifier: Modifier = Modifier, data: PictureBean) {
 @Preview(showBackground = true, showSystemUi = true)
 @Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES, locale = "fr")
 @Composable
-fun SearchScreenPreviewError() {
-    //Il faut remplacer NomVotreAppliTheme par le thème de votre application
-    //Utilisé par exemple dans MainActivity.kt sous setContent {...}
-    _2025_sdv_parisaTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            var viewModel = MainViewModel()
-            viewModel.loadFakeData(true, "Erreur")
-            SearchScreen(modifier = Modifier.padding(innerPadding))
-        }
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES, locale = "fr")
-@Composable
 fun SearchScreenPreview() {
     //Il faut remplacer NomVotreAppliTheme par le thème de votre application
     //Utilisé par exemple dans MainActivity.kt sous setContent {...}
     _2025_sdv_parisaTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             var viewModel = MainViewModel()
-            viewModel.loadFakeData(false)
-            SearchScreen(modifier = Modifier.padding(innerPadding))
+            viewModel.loadFakeData(runInProgress = true, errorMessage = "une erreur")
+            SearchScreen(modifier = Modifier.padding(innerPadding), mainViewModel = viewModel)
         }
     }
 }
