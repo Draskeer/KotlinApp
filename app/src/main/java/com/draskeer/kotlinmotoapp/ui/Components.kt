@@ -1,4 +1,4 @@
-package com.amonteiro.a2025_sdv_parisa.ui
+package com.draskeer.kotlinmotoapp.ui
 
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
@@ -13,13 +13,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.amonteiro.a2025_sdv_parisa.ui.theme._2025_sdv_parisaTheme
+import com.draskeer.kotlinmotoapp.ui.theme.motoAppTheme
 
 @Preview(showBackground = true, showSystemUi = true)
 @Preview(showBackground = true, showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun MyErrorPreview() {
-    _2025_sdv_parisaTheme {
+    motoAppTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             Column(modifier = Modifier.padding(innerPadding)) {
                 //Je mets 2 versions pour tester avec et sans message d'erreur

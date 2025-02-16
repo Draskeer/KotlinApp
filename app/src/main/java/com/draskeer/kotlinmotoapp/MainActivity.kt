@@ -1,4 +1,4 @@
-package com.amonteiro.a2025_sdv_parisa
+package com.draskeer.kotlinmotoapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.amonteiro.a2025_sdv_parisa.ui.screens.SearchScreen
-import com.amonteiro.a2025_sdv_parisa.ui.theme._2025_sdv_parisaTheme
+import com.draskeer.kotlinmotoapp.ui.screens.SearchScreen
+import com.draskeer.kotlinmotoapp.ui.theme.motoAppTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            _2025_sdv_parisaTheme {
+            motoAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     SearchScreen(modifier = Modifier.padding(innerPadding))
                 }

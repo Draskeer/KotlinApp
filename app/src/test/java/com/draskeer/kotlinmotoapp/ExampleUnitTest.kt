@@ -1,4 +1,4 @@
-package com.amonteiro.a2025_sdv_parisa
+package com.draskeer.kotlinmotoapp
 
 import org.junit.Test
 

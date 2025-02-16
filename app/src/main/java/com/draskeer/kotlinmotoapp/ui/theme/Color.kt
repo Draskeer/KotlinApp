@@ -1,4 +1,4 @@
-package com.amonteiro.a2025_sdv_parisa.ui.theme
+package com.draskeer.kotlinmotoapp.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF6D5E0F)

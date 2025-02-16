@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.amonteiro.a2025_sdv_parisa"
+    namespace = "com.draskeer.kotlinmotoapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.amonteiro.a2025_sdv_parisa"
+        applicationId = "com.draskeer.kotlinmotoapp"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -41,6 +41,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:+")
     implementation("com.google.code.gson:gson:+")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+    implementation("io.coil-kt:coil-compose:2.0.0")
 
     implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")

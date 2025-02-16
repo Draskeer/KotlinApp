@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "2025_sdv_parisa"
+rootProject.name = "kotlinmotoapp\n"
 include(":app")
  

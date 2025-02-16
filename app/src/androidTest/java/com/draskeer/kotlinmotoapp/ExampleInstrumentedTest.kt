@@ -1,4 +1,4 @@
-package com.amonteiro.a2025_sdv_parisa
+package com.draskeer.kotlinmotoapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

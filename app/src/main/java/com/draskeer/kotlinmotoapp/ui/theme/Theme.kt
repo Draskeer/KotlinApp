@@ -1,4 +1,4 @@
-package com.amonteiro.a2025_sdv_parisa.ui.theme
+package com.draskeer.kotlinmotoapp.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -87,7 +87,7 @@ private val darkScheme = darkColorScheme(
 )
 
 @Composable
-fun _2025_sdv_parisaTheme(
+fun motoAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
